@@ -1,21 +1,18 @@
 class Solution(object):
     def isPalindrome(self, s):
-        found = True
         s=s.lower()
         left=0
         right=len(s)-1
 
         while(left<right):
-            if s[left].isalnum():
-                if s[right].isalnum():
-                    if s[left]==s[right]:
-                        right-=1
-                        left+=1 
-                    else:
-                        found=False
-                        break
-                else:
-                    right-=1   
-            else:
+            if not s[left].isalnum():
                 left+=1
-        return found
+            elif not s[right].isalnum():
+                right-=1
+            elif s[right]==s[left]:
+                right-=1
+                left+=1
+            else:
+                return False
+        return True
+         
